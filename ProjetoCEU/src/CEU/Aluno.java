@@ -8,15 +8,14 @@ package CEU;
 
 
 public class Aluno {
+    private String codigo;
     private String nome;
     private String endereço;
     private String bairro;
     private String rg;
     private String cpf;
     private String fone;
-    private String compResidencia;
     private String curso;
-    private String anoLetivo;
     private String instEnsino;
     private String cidade;
 
@@ -106,19 +105,9 @@ public class Aluno {
         this.fone = fone;
     }
 
-    /**
-     * @return the compResidencia
-     */
-    public String getCompResidencia() {
-        return compResidencia;
-    }
+    
 
-    /**
-     * @param compResidencia the compResidencia to set
-     */
-    public void setCompResidencia(String compResidencia) {
-        this.compResidencia = compResidencia;
-    }
+    
 
     /**
      * @return the curso
@@ -134,19 +123,6 @@ public class Aluno {
         this.curso = curso;
     }
 
-    /**
-     * @return the anoLetivo
-     */
-    public String getAnoLetivo() {
-        return anoLetivo;
-    }
-
-    /**
-     * @param anoLetivo the anoLetivo to set
-     */
-    public void setAnoLetivo(String anoLetivo) {
-        this.anoLetivo = anoLetivo;
-    }
 
     /**
      * @return the instEnsino
@@ -174,6 +150,20 @@ public class Aluno {
      */
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    /**
+     * @return the codigo
+     */
+    public String getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
     
     
