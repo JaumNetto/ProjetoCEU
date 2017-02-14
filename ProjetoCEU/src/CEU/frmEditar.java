@@ -65,6 +65,7 @@ public class frmEditar extends javax.swing.JFrame {
         tbAlunos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
+        btnSalvar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -296,6 +297,14 @@ public class frmEditar extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnSalvar1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnSalvar1.setText("Excluir");
+        btnSalvar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSalvar1MousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -309,7 +318,8 @@ public class frmEditar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvar1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -331,7 +341,8 @@ public class frmEditar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnSair))
+                    .addComponent(btnSair)
+                    .addComponent(btnSalvar1))
                 .addContainerGap())
         );
 
@@ -443,6 +454,17 @@ public class frmEditar extends javax.swing.JFrame {
             
     }//GEN-LAST:event_tbAlunosMousePressed
 
+    private void btnSalvar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvar1MousePressed
+        int resp = JOptionPane.showConfirmDialog(null, "Voce deseja excluir?", "Pergunta", JOptionPane.YES_NO_OPTION);
+        if(resp == JOptionPane.YES_OPTION){
+        
+        int linha = tbAlunos.getSelectedRow();
+        String codigo = (String) tbAlunos.getModel().getValueAt(linha, 0);
+        
+        ob.excluirAlunos(codigo);
+        }
+    }//GEN-LAST:event_btnSalvar1MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -481,6 +503,7 @@ public class frmEditar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnSalvar1;
     private javax.swing.JComboBox<String> cbCidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

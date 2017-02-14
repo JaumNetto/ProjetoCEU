@@ -84,7 +84,7 @@ public class OpBancoCadastroAluno {
             pre.setString(9, a.getCidade());
             
             pre.executeUpdate();
-            System.out.println("Inclusão Realizada!");
+            System.out.println("Inclusão Realizada! "+a.getNome());
             JOptionPane.showMessageDialog(null, "Inclusão Realizada!");
         } catch (SQLException b){
             System.out.println("Erro ao incluir "+b.getMessage());
@@ -125,7 +125,7 @@ public class OpBancoCadastroAluno {
             pre = conexao.prepareStatement(sql);
             pre.setString(1, c);
             pre.executeUpdate();
-            System.out.println("Excluido com sucesso");        
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso");
         }catch(SQLException e){
             System.out.println("Erro ao excluir: "+ e.getMessage());
         }//fim do catch
@@ -209,4 +209,39 @@ public class OpBancoCadastroAluno {
        }//fim do catch
        return rs;
    }//fim do método
+   
+   public ResultSet buscarAlunoPorInst(String inst){
+       PreparedStatement st;
+       ResultSet rs = null;
+       try{
+           Connection conexao = this.obterConexao();
+           st = conexao.prepareStatement("select * from aluno where instensino like ? order by nome");
+                st.setString(1, inst + '%');
+                rs = st.executeQuery();
+                System.out.println("\naluno buscado");
+                
+       }catch(Exception e){
+           System.out.println("Erro: "+ e.getMessage());
+       }//fim do catch
+       return rs;
+   }//fim do método
+   
+   
+   public ResultSet verCpf(String cpf){
+       PreparedStatement st;
+       ResultSet rs = null;
+       try{
+           Connection conexao = this.obterConexao();
+           st = conexao.prepareStatement("select * from aluno where cpf in(select b.cpf from aluno b group by b.cpf"
+                   + " having count(*)>1) order by cpf, nome");
+                st.setString(1, cpf + '%');
+                rs = st.executeQuery();
+                System.out.println("\nCpf Buscado");
+                
+       }catch(Exception e){
+           System.out.println("Erro: "+ e.getMessage());
+       }//fim do catch
+       return rs;
+   }
+   
 }

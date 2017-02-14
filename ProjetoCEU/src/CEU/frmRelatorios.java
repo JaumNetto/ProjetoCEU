@@ -270,7 +270,7 @@ public class frmRelatorios extends javax.swing.JFrame {
         ResultSet ls = ob.executarQuery("select * from aluno where cidade like '"+cidade+"' order by nome");
         JRResultSetDataSource relatResul = new JRResultSetDataSource(ls);
         try {
-            JasperPrint jpPrint = JasperFillManager.fillReport("C:/Users/Servidor/Documents/NetBeansProjects/ProjetoCEU/Relatorios/RelatorioEstudantes.jasper", new HashMap(), relatResul);
+            JasperPrint jpPrint = JasperFillManager.fillReport("C:/Users/Servidor/Documents/NetBeansProjects/ProjetoCEU/Relatorios/Relatorio2.jasper", new HashMap(), relatResul);
             JasperViewer jv = new JasperViewer(jpPrint, false);
             jv.setVisible(true);
 
